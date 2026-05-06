@@ -1,12 +1,11 @@
-
-
 public class Length {
 
     private final double value;
     private final LengthUnit unit;
 
-    // Enum for units (conversion base = inches)
+    // Enum for units
     public enum LengthUnit {
+
         FEET(12.0),
         INCHES(1.0);
 
@@ -23,28 +22,38 @@ public class Length {
 
     // Constructor
     public Length(double value, LengthUnit unit) {
+
         this.value = value;
         this.unit = unit;
     }
 
-    // Convert to base unit (inches)
+    // Convert all units into inches
     private double convertToBaseUnit() {
-        return this.value * this.unit.getConversionFactor();
+
+        return this.value *
+                this.unit.getConversionFactor();
     }
 
-    // Compare two Length objects
-    public boolean compare(Length other) {
-        return Double.compare(this.convertToBaseUnit(), other.convertToBaseUnit()) == 0;
-    }
-
-    // Override equals()
+    // Equality comparison
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (this.getClass() != obj.getClass()) return false;
+
+        // Same reference check
+        if (this == obj)
+            return true;
+
+        // Null check
+        if (obj == null)
+            return false;
+
+        // Type check
+        if (this.getClass() != obj.getClass())
+            return false;
 
         Length other = (Length) obj;
-        return this.compare(other);
+
+        return Double.compare(
+                this.convertToBaseUnit(),
+                other.convertToBaseUnit()) == 0;
     }
 }
