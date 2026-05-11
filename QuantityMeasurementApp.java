@@ -1,75 +1,81 @@
-import java.util.Scanner;
+package com.apps.quantitymeasurement;
 
 public class QuantityMeasurementApp {
 
-    // Generic method
-    public static boolean demonstrateLengthEquality(Length l1, Length l2) {
-        return l1.equals(l2);
+    // Generic method for equality check
+    public static boolean demonstrateLengthEquality(
+            Length length1,
+            Length length2) {
+
+        return length1.equals(length2);
     }
 
-    // Feet check
-    public static void demonstrateFeetEquality() {
-        Length l1 = new Length(1.0, Length.LengthUnit.FEET);
-        Length l2 = new Length(1.0, Length.LengthUnit.FEET);
-        System.out.println("Feet Equal? " + l1.equals(l2));
+    // Generic display method
+    public static void demonstrateLengthComparison(
+            double value1,
+            Length.LengthUnit unit1,
+            double value2,
+            Length.LengthUnit unit2) {
+
+        Length length1 =
+                new Length(value1, unit1);
+
+        Length length2 =
+                new Length(value2, unit2);
+
+        System.out.println(
+                value1 + " " + unit1
+                        + " == "
+                        + value2 + " " + unit2
+                        + " ? "
+                        + demonstrateLengthEquality(
+                                length1,
+                                length2));
     }
 
-    // Inches check
-    public static void demonstrateInchesEquality() {
-        Length l1 = new Length(1.0, Length.LengthUnit.INCHES);
-        Length l2 = new Length(1.0, Length.LengthUnit.INCHES);
-        System.out.println("Inches Equal? " + l1.equals(l2));
-    }
-
-    // Cross-unit comparison
-    public static void demonstrateFeetInchesComparison() {
-        Length l1 = new Length(1.0, Length.LengthUnit.FEET);
-        Length l2 = new Length(12.0, Length.LengthUnit.INCHES);
-        System.out.println("Feet-Inches Equal? " + l1.equals(l2));
-    }
-
-    // MAIN METHOD
+    // Main Method
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        // Feet and Inches
+        demonstrateLengthComparison(
+                1.0,
+                Length.LengthUnit.FEET,
+                12.0,
+                Length.LengthUnit.INCHES);
 
-        double v1 = readDouble(sc, "Enter first value: ");
-        Length.LengthUnit u1 = readUnit(sc, "Enter first unit (FEET/INCHES): ");
+        // Yard and Inches
+        demonstrateLengthComparison(
+                1.0,
+                Length.LengthUnit.YARDS,
+                36.0,
+                Length.LengthUnit.INCHES);
 
-        double v2 = readDouble(sc, "Enter second value: ");
-        Length.LengthUnit u2 = readUnit(sc, "Enter second unit (FEET/INCHES): ");
+        // Yard and Feet
+        demonstrateLengthComparison(
+                1.0,
+                Length.LengthUnit.YARDS,
+                3.0,
+                Length.LengthUnit.FEET);
 
-        Length l1 = new Length(v1, u1);
-        Length l2 = new Length(v2, u2);
+        // Centimeters and Inches
+        demonstrateLengthComparison(
+                1.0,
+                Length.LengthUnit.CENTIMETERS,
+                0.393701,
+                Length.LengthUnit.INCHES);
 
-        System.out.println("Are lengths equal? " + l1.equals(l2));
+        // Feet and Yards
+        demonstrateLengthComparison(
+                6.0,
+                Length.LengthUnit.FEET,
+                2.0,
+                Length.LengthUnit.YARDS);
 
-        sc.close();
-    }
-
-    // -------- Helper Methods --------
-
-    private static double readDouble(Scanner sc, String message) {
-        while (true) {
-            System.out.print(message);
-            String input = sc.next();
-            try {
-                return Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input! Enter a number.");
-            }
-        }
-    }
-
-    private static Length.LengthUnit readUnit(Scanner sc, String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            String input = sc.next().toUpperCase();
-            try {
-                return Length.LengthUnit.valueOf(input);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid unit! Please enter FEET or INCHES.");
-            }
-        }
+        // Centimeters and Feet
+        demonstrateLengthComparison(
+                30.48,
+                Length.LengthUnit.CENTIMETERS,
+                1.0,
+                Length.LengthUnit.FEET);
     }
 }
