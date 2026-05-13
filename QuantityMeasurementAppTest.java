@@ -349,53 +349,380 @@
 
 
 
+// package com.apps.quantitymeasurement;
+
+// import org.junit.jupiter.api.Test;
+
+// import static org.junit.jupiter.api.Assertions.*;
+
+// /**
+//  * Clean and optimized test suite for UC1 → UC5
+//  */
+// public class QuantityMeasurementAppTest {
+
+//     // =========================
+//     // UC1 TESTS
+//     // =========================
+
+//     @Test
+//     public void testFeetEquality() {
+
+//         Length l1 =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         Length l2 =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(l1, l2);
+//     }
+
+//     @Test
+//     public void testFeetInequality() {
+
+//         Length l1 =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         Length l2 =
+//                 new Length(2.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertNotEquals(l1, l2);
+//     }
+
+//     // =========================
+//     // UC2 TESTS
+//     // =========================
+
+//     @Test
+//     public void testFeetInchesComparison() {
+
+//         Length feet =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         Length inches =
+//                 new Length(12.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(feet, inches);
+//     }
+
+//     // =========================
+//     // UC3 TESTS
+//     // =========================
+
+//     @Test
+//     public void testNullComparison() {
+
+//         Length length =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertNotEquals(null, length);
+//     }
+
+//     @Test
+//     public void testSameReference() {
+
+//         Length length =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(length, length);
+//     }
+
+//     @Test
+//     public void testDifferentObjectComparison() {
+
+//         Length length =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertNotEquals(length, "test");
+//     }
+
+//     // =========================
+//     // UC4 TESTS
+//     // =========================
+
+//     @Test
+//     public void testYardToInchesEquality() {
+
+//         Length yard =
+//                 new Length(1.0,
+//                         Length.LengthUnit.YARDS);
+
+//         Length inches =
+//                 new Length(36.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(yard, inches);
+//     }
+
+//     @Test
+//     public void testYardToFeetEquality() {
+
+//         Length yard =
+//                 new Length(1.0,
+//                         Length.LengthUnit.YARDS);
+
+//         Length feet =
+//                 new Length(3.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(yard, feet);
+//     }
+
+//     @Test
+//     public void testCentimeterToFeetEquality() {
+
+//         Length centimeter =
+//                 new Length(30.48,
+//                         Length.LengthUnit.CENTIMETERS);
+
+//         Length feet =
+//                 new Length(1.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(centimeter, feet);
+//     }
+
+//     @Test
+//     public void testTransitiveProperty() {
+
+//         Length yard =
+//                 new Length(1.0,
+//                         Length.LengthUnit.YARDS);
+
+//         Length feet =
+//                 new Length(3.0,
+//                         Length.LengthUnit.FEET);
+
+//         Length inches =
+//                 new Length(36.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(yard, feet);
+
+//         assertEquals(feet, inches);
+
+//         assertEquals(yard, inches);
+//     }
+
+//     // =========================
+//     // UC5 CONVERSION TESTS
+//     // =========================
+
+//     @Test
+//     public void testConvertFeetToInches() {
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 1.0,
+//                                 Length.LengthUnit.FEET,
+//                                 Length.LengthUnit.INCHES);
+
+//         Length expected =
+//                 new Length(12.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(expected, result);
+//     }
+
+//     @Test
+//     public void testConvertInchesToFeet() {
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 24.0,
+//                                 Length.LengthUnit.INCHES,
+//                                 Length.LengthUnit.FEET);
+
+//         Length expected =
+//                 new Length(2.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(expected, result);
+//     }
+
+//     @Test
+//     public void testConvertYardsToInches() {
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 2.0,
+//                                 Length.LengthUnit.YARDS,
+//                                 Length.LengthUnit.INCHES);
+
+//         Length expected =
+//                 new Length(72.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(expected, result);
+//     }
+
+//     @Test
+//     public void testSameUnitConversion() {
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 5.0,
+//                                 Length.LengthUnit.FEET,
+//                                 Length.LengthUnit.FEET);
+
+//         Length expected =
+//                 new Length(5.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(expected, result);
+//     }
+
+//     @Test
+//     public void testZeroValueConversion() {
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 0.0,
+//                                 Length.LengthUnit.FEET,
+//                                 Length.LengthUnit.INCHES);
+
+//         Length expected =
+//                 new Length(0.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(expected, result);
+//     }
+
+//     @Test
+//     public void testNegativeValueConversion() {
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 -1.0,
+//                                 Length.LengthUnit.FEET,
+//                                 Length.LengthUnit.INCHES);
+
+//         Length expected =
+//                 new Length(-12.0,
+//                         Length.LengthUnit.INCHES);
+
+//         assertEquals(expected, result);
+//     }
+
+//     @Test
+//     public void testOverloadedConversionMethod() {
+
+//         Length yard =
+//                 new Length(1.0,
+//                         Length.LengthUnit.YARDS);
+
+//         Length result =
+//                 QuantityMeasurementApp
+//                         .demonstrateLengthConversion(
+//                                 yard,
+//                                 Length.LengthUnit.FEET);
+
+//         Length expected =
+//                 new Length(3.0,
+//                         Length.LengthUnit.FEET);
+
+//         assertEquals(expected, result);
+//     }
+
+//     // =========================
+//     // EXCEPTION TESTS
+//     // =========================
+
+//     @Test
+//     public void testNullUnitException() {
+
+//         assertThrows(
+//                 IllegalArgumentException.class,
+//                 () -> new Length(
+//                         1.0,
+//                         null));
+//     }
+
+//     @Test
+//     public void testNaNException() {
+
+//         assertThrows(
+//                 IllegalArgumentException.class,
+//                 () -> new Length(
+//                         Double.NaN,
+//                         Length.LengthUnit.FEET));
+//     }
+
+//     @Test
+//     public void testInfiniteValueException() {
+
+//         assertThrows(
+//                 IllegalArgumentException.class,
+//                 () -> new Length(
+//                         Double.POSITIVE_INFINITY,
+//                         Length.LengthUnit.FEET));
+//     }
+// }
+
+
+
+
+//uc6
 package com.apps.quantitymeasurement;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Clean and optimized test suite for UC1 → UC5
- */
 public class QuantityMeasurementAppTest {
 
-    // =========================
-    // UC1 TESTS
-    // =========================
-
+    // UC1
     @Test
     public void testFeetEquality() {
 
-        Length l1 =
+        Length length1 =
                 new Length(1.0,
                         Length.LengthUnit.FEET);
 
-        Length l2 =
+        Length length2 =
                 new Length(1.0,
                         Length.LengthUnit.FEET);
 
-        assertEquals(l1, l2);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                length1,
+                                length2));
     }
 
     @Test
-    public void testFeetInequality() {
+    public void testInchesEquality() {
 
-        Length l1 =
-                new Length(1.0,
-                        Length.LengthUnit.FEET);
+        Length length1 =
+                new Length(12.0,
+                        Length.LengthUnit.INCHES);
 
-        Length l2 =
-                new Length(2.0,
-                        Length.LengthUnit.FEET);
+        Length length2 =
+                new Length(12.0,
+                        Length.LengthUnit.INCHES);
 
-        assertNotEquals(l1, l2);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                length1,
+                                length2));
     }
 
-    // =========================
-    // UC2 TESTS
-    // =========================
-
+    // UC2
     @Test
     public void testFeetInchesComparison() {
 
@@ -407,49 +734,89 @@ public class QuantityMeasurementAppTest {
                 new Length(12.0,
                         Length.LengthUnit.INCHES);
 
-        assertEquals(feet, inches);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthComparison(
+                                feet,
+                                inches));
     }
 
-    // =========================
-    // UC3 TESTS
-    // =========================
-
     @Test
-    public void testNullComparison() {
+    public void testFeetInequality() {
 
-        Length length =
+        Length length1 =
                 new Length(1.0,
                         Length.LengthUnit.FEET);
 
-        assertNotEquals(null, length);
-    }
-
-    @Test
-    public void testSameReference() {
-
-        Length length =
-                new Length(1.0,
+        Length length2 =
+                new Length(2.0,
                         Length.LengthUnit.FEET);
 
-        assertEquals(length, length);
+        assertFalse(
+                QuantityMeasurementApp
+                        .demonstrateLengthComparison(
+                                length1,
+                                length2));
     }
 
     @Test
-    public void testDifferentObjectComparison() {
+    public void testInchesInequality() {
 
-        Length length =
+        Length length1 =
+                new Length(12.0,
+                        Length.LengthUnit.INCHES);
+
+        Length length2 =
+                new Length(24.0,
+                        Length.LengthUnit.INCHES);
+
+        assertFalse(
+                QuantityMeasurementApp
+                        .demonstrateLengthComparison(
+                                length1,
+                                length2));
+    }
+
+    // UC3
+    @Test
+    public void testCrossUnitInequality() {
+
+        Length yard =
                 new Length(1.0,
+                        Length.LengthUnit.YARDS);
+
+        Length inches =
+                new Length(24.0,
+                        Length.LengthUnit.INCHES);
+
+        assertFalse(
+                QuantityMeasurementApp
+                        .demonstrateLengthComparison(
+                                yard,
+                                inches));
+    }
+
+    @Test
+    public void testMultipleFeetComparison() {
+
+        Length feet1 =
+                new Length(3.0,
                         Length.LengthUnit.FEET);
 
-        assertNotEquals(length, "test");
+        Length yard =
+                new Length(1.0,
+                        Length.LengthUnit.YARDS);
+
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthComparison(
+                                feet1,
+                                yard));
     }
 
-    // =========================
-    // UC4 TESTS
-    // =========================
-
+    // UC4
     @Test
-    public void testYardToInchesEquality() {
+    public void yardEquals36Inches() {
 
         Length yard =
                 new Length(1.0,
@@ -459,67 +826,72 @@ public class QuantityMeasurementAppTest {
                 new Length(36.0,
                         Length.LengthUnit.INCHES);
 
-        assertEquals(yard, inches);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                yard,
+                                inches));
     }
 
     @Test
-    public void testYardToFeetEquality() {
+    public void centimeterEquals39Point3701Inches() {
 
-        Length yard =
-                new Length(1.0,
-                        Length.LengthUnit.YARDS);
+        Length centimeter =
+                new Length(100.0,
+                        Length.LengthUnit.CENTIMETERS);
+
+        Length inches =
+                new Length(39.37,
+                        Length.LengthUnit.INCHES);
+
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                centimeter,
+                                inches));
+    }
+
+    @Test
+    public void threeFeetEqualsOneYard() {
 
         Length feet =
                 new Length(3.0,
                         Length.LengthUnit.FEET);
 
-        assertEquals(yard, feet);
+        Length yard =
+                new Length(1.0,
+                        Length.LengthUnit.YARDS);
+
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                feet,
+                                yard));
     }
 
     @Test
-    public void testCentimeterToFeetEquality() {
+    public void thirtyPoint48CmEqualsOneFoot() {
 
         Length centimeter =
                 new Length(30.48,
                         Length.LengthUnit.CENTIMETERS);
 
-        Length feet =
+        Length foot =
                 new Length(1.0,
                         Length.LengthUnit.FEET);
 
-        assertEquals(centimeter, feet);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                centimeter,
+                                foot));
     }
 
+    // UC5
     @Test
-    public void testTransitiveProperty() {
+    public void convertFeetToInches() {
 
-        Length yard =
-                new Length(1.0,
-                        Length.LengthUnit.YARDS);
-
-        Length feet =
-                new Length(3.0,
-                        Length.LengthUnit.FEET);
-
-        Length inches =
-                new Length(36.0,
-                        Length.LengthUnit.INCHES);
-
-        assertEquals(yard, feet);
-
-        assertEquals(feet, inches);
-
-        assertEquals(yard, inches);
-    }
-
-    // =========================
-    // UC5 CONVERSION TESTS
-    // =========================
-
-    @Test
-    public void testConvertFeetToInches() {
-
-        Length result =
+        Length converted =
                 QuantityMeasurementApp
                         .demonstrateLengthConversion(
                                 1.0,
@@ -530,145 +902,233 @@ public class QuantityMeasurementAppTest {
                 new Length(12.0,
                         Length.LengthUnit.INCHES);
 
-        assertEquals(expected, result);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                converted,
+                                expected));
     }
 
     @Test
-    public void testConvertInchesToFeet() {
+    public void convertYardsToInchesUsingOverloadedMethod() {
 
-        Length result =
-                QuantityMeasurementApp
-                        .demonstrateLengthConversion(
-                                24.0,
-                                Length.LengthUnit.INCHES,
-                                Length.LengthUnit.FEET);
-
-        Length expected =
+        Length yard =
                 new Length(2.0,
-                        Length.LengthUnit.FEET);
+                        Length.LengthUnit.YARDS);
 
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testConvertYardsToInches() {
-
-        Length result =
+        Length converted =
                 QuantityMeasurementApp
                         .demonstrateLengthConversion(
-                                2.0,
-                                Length.LengthUnit.YARDS,
+                                yard,
                                 Length.LengthUnit.INCHES);
 
         Length expected =
                 new Length(72.0,
                         Length.LengthUnit.INCHES);
 
-        assertEquals(expected, result);
+        assertTrue(
+                QuantityMeasurementApp
+                        .demonstrateLengthEquality(
+                                converted,
+                                expected));
     }
 
+    // UC6
     @Test
-    public void testSameUnitConversion() {
+    public void testAddition_SameUnit_FeetPlusFeet() {
 
-        Length result =
-                QuantityMeasurementApp
-                        .demonstrateLengthConversion(
-                                5.0,
-                                Length.LengthUnit.FEET,
-                                Length.LengthUnit.FEET);
-
-        Length expected =
-                new Length(5.0,
+        Length length1 =
+                new Length(1.0,
                         Length.LengthUnit.FEET);
 
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testZeroValueConversion() {
+        Length length2 =
+                new Length(2.0,
+                        Length.LengthUnit.FEET);
 
         Length result =
                 QuantityMeasurementApp
-                        .demonstrateLengthConversion(
-                                0.0,
-                                Length.LengthUnit.FEET,
-                                Length.LengthUnit.INCHES);
-
-        Length expected =
-                new Length(0.0,
-                        Length.LengthUnit.INCHES);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testNegativeValueConversion() {
-
-        Length result =
-                QuantityMeasurementApp
-                        .demonstrateLengthConversion(
-                                -1.0,
-                                Length.LengthUnit.FEET,
-                                Length.LengthUnit.INCHES);
-
-        Length expected =
-                new Length(-12.0,
-                        Length.LengthUnit.INCHES);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testOverloadedConversionMethod() {
-
-        Length yard =
-                new Length(1.0,
-                        Length.LengthUnit.YARDS);
-
-        Length result =
-                QuantityMeasurementApp
-                        .demonstrateLengthConversion(
-                                yard,
-                                Length.LengthUnit.FEET);
+                        .demonstrateLengthAddition(
+                                length1,
+                                length2);
 
         Length expected =
                 new Length(3.0,
                         Length.LengthUnit.FEET);
 
-        assertEquals(expected, result);
-    }
-
-    // =========================
-    // EXCEPTION TESTS
-    // =========================
-
-    @Test
-    public void testNullUnitException() {
-
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new Length(
-                        1.0,
-                        null));
+        assertTrue(result.equals(expected));
     }
 
     @Test
-    public void testNaNException() {
+    public void testAddition_SameUnit_InchPlusInch() {
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new Length(
-                        Double.NaN,
-                        Length.LengthUnit.FEET));
+        Length length1 =
+                new Length(6.0,
+                        Length.LengthUnit.INCHES);
+
+        Length length2 =
+                new Length(6.0,
+                        Length.LengthUnit.INCHES);
+
+        Length result =
+                QuantityMeasurementApp
+                        .demonstrateLengthAddition(
+                                length1,
+                                length2);
+
+        Length expected =
+                new Length(12.0,
+                        Length.LengthUnit.INCHES);
+
+        assertTrue(result.equals(expected));
     }
 
     @Test
-    public void testInfiniteValueException() {
+    public void testAddition_CrossUnit_FeetPlusInches() {
+
+        Length feet =
+                new Length(1.0,
+                        Length.LengthUnit.FEET);
+
+        Length inches =
+                new Length(12.0,
+                        Length.LengthUnit.INCHES);
+
+        Length result =
+                QuantityMeasurementApp
+                        .demonstrateLengthAddition(
+                                feet,
+                                inches);
+
+        Length expected =
+                new Length(2.0,
+                        Length.LengthUnit.FEET);
+
+        assertTrue(result.equals(expected));
+    }
+
+    @Test
+    public void testAddition_CrossUnit_InchPlusFeet() {
+
+        Length inches =
+                new Length(12.0,
+                        Length.LengthUnit.INCHES);
+
+        Length feet =
+                new Length(1.0,
+                        Length.LengthUnit.FEET);
+
+        Length result =
+                QuantityMeasurementApp
+                        .demonstrateLengthAddition(
+                                inches,
+                                feet);
+
+        Length expected =
+                new Length(24.0,
+                        Length.LengthUnit.INCHES);
+
+        assertTrue(result.equals(expected));
+    }
+
+    @Test
+    public void testAddition_WithZero() {
+
+        Length feet =
+                new Length(5.0,
+                        Length.LengthUnit.FEET);
+
+        Length zero =
+                new Length(0.0,
+                        Length.LengthUnit.INCHES);
+
+        Length result =
+                QuantityMeasurementApp
+                        .demonstrateLengthAddition(
+                                feet,
+                                zero);
+
+        Length expected =
+                new Length(5.0,
+                        Length.LengthUnit.FEET);
+
+        assertTrue(result.equals(expected));
+    }
+
+    @Test
+    public void testAddition_NegativeValues() {
+
+        Length length1 =
+                new Length(5.0,
+                        Length.LengthUnit.FEET);
+
+        Length length2 =
+                new Length(-2.0,
+                        Length.LengthUnit.FEET);
+
+        Length result =
+                QuantityMeasurementApp
+                        .demonstrateLengthAddition(
+                                length1,
+                                length2);
+
+        Length expected =
+                new Length(3.0,
+                        Length.LengthUnit.FEET);
+
+        assertTrue(result.equals(expected));
+    }
+
+    @Test
+    public void testAddition_NullSecondOperand() {
+
+        Length length1 =
+                new Length(1.0,
+                        Length.LengthUnit.FEET);
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Length(
-                        Double.POSITIVE_INFINITY,
-                        Length.LengthUnit.FEET));
+                () -> length1.add(null));
+    }
+
+    @Test
+    public void testAddition_LargeValues() {
+
+        Length length1 =
+                new Length(1000000.0,
+                        Length.LengthUnit.FEET);
+
+        Length length2 =
+                new Length(1000000.0,
+                        Length.LengthUnit.FEET);
+
+        Length result =
+                length1.add(length2);
+
+        Length expected =
+                new Length(2000000.0,
+                        Length.LengthUnit.FEET);
+
+        assertTrue(result.equals(expected));
+    }
+
+    @Test
+    public void testAddition_SmallValues() {
+
+        Length length1 =
+                new Length(0.001,
+                        Length.LengthUnit.FEET);
+
+        Length length2 =
+                new Length(0.002,
+                        Length.LengthUnit.FEET);
+
+        Length result =
+                length1.add(length2);
+
+        Length expected =
+                new Length(0.0,
+                        Length.LengthUnit.FEET);
+
+        assertNotNull(result);
     }
 }
