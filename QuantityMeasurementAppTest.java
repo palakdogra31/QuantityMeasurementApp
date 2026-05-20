@@ -16,12 +16,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         Length l2 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(l1, l2);
     }
@@ -32,12 +32,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         Length l2 =
                 new Length(
                         2.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertNotEquals(l1, l2);
     }
@@ -48,7 +48,7 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(l1, l1);
     }
@@ -59,7 +59,7 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertNotEquals(null, l1);
     }
@@ -70,7 +70,7 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertFalse(l1.equals("test"));
     }
@@ -85,12 +85,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         Length l2 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(l1, l2);
     }
@@ -101,12 +101,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         Length l2 =
                 new Length(
                         2.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertNotEquals(l1, l2);
     }
@@ -117,12 +117,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         Length l2 =
                 new Length(
                         12.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(l1, l2);
     }
@@ -133,12 +133,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         12.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         Length l2 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(l1, l2);
     }
@@ -153,7 +153,7 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertFalse(l1.equals(null));
     }
@@ -164,7 +164,7 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertTrue(l1.equals(l1));
     }
@@ -175,7 +175,7 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertFalse(l1.equals("Length"));
     }
@@ -190,12 +190,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.YARDS);
 
         Length l2 =
                 new Length(
                         3.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(l1, l2);
     }
@@ -206,12 +206,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         3.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         Length l2 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.YARDS);
 
         assertEquals(l1, l2);
     }
@@ -222,12 +222,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.YARDS);
 
         Length l2 =
                 new Length(
                         36.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(l1, l2);
     }
@@ -238,12 +238,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         36.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         Length l2 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.YARDS);
 
         assertEquals(l1, l2);
     }
@@ -254,12 +254,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.CENTIMETERS);
+                        LengthUnit.CENTIMETERS);
 
         Length l2 =
                 new Length(
                         0.393701,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(l1, l2);
     }
@@ -270,12 +270,12 @@ public class QuantityMeasurementAppTest {
         Length l1 =
                 new Length(
                         30.48,
-                        Length.LengthUnit.CENTIMETERS);
+                        LengthUnit.CENTIMETERS);
 
         Length l2 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(l1, l2);
     }
@@ -286,17 +286,17 @@ public class QuantityMeasurementAppTest {
         Length yard =
                 new Length(
                         2.0,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.YARDS);
 
         Length feet =
                 new Length(
                         6.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         Length inches =
                 new Length(
                         72.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(yard, feet);
 
@@ -315,15 +315,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .convertTo(
-                                Length.LengthUnit.INCHES);
+                                LengthUnit.INCHES);
 
         Length expected =
                 new Length(
                         12.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
@@ -334,15 +334,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         24.0,
-                        Length.LengthUnit.INCHES)
+                        LengthUnit.INCHES)
 
                         .convertTo(
-                                Length.LengthUnit.FEET);
+                                LengthUnit.FEET);
 
         Length expected =
                 new Length(
                         2.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -353,15 +353,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         1.0,
-                        Length.LengthUnit.YARDS)
+                        LengthUnit.YARDS)
 
                         .convertTo(
-                                Length.LengthUnit.FEET);
+                                LengthUnit.FEET);
 
         Length expected =
                 new Length(
                         3.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -372,15 +372,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         2.54,
-                        Length.LengthUnit.CENTIMETERS)
+                        LengthUnit.CENTIMETERS)
 
                         .convertTo(
-                                Length.LengthUnit.INCHES);
+                                LengthUnit.INCHES);
 
         Length expected =
                 new Length(
                         1.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
@@ -391,15 +391,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         5.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .convertTo(
-                                Length.LengthUnit.FEET);
+                                LengthUnit.FEET);
 
         Length expected =
                 new Length(
                         5.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -410,15 +410,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         0.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .convertTo(
-                                Length.LengthUnit.INCHES);
+                                LengthUnit.INCHES);
 
         Length expected =
                 new Length(
                         0.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
@@ -429,15 +429,15 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         -1.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .convertTo(
-                                Length.LengthUnit.INCHES);
+                                LengthUnit.INCHES);
 
         Length expected =
                 new Length(
                         -12.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
@@ -465,7 +465,7 @@ public class QuantityMeasurementAppTest {
 
                 () -> new Length(
                         Double.NaN,
-                        Length.LengthUnit.FEET));
+                        LengthUnit.FEET));
     }
 
     @Test
@@ -476,7 +476,7 @@ public class QuantityMeasurementAppTest {
 
                 () -> new Length(
                         Double.POSITIVE_INFINITY,
-                        Length.LengthUnit.FEET));
+                        LengthUnit.FEET));
     }
 
     // =====================================================
@@ -489,18 +489,18 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .add(
 
                                 new Length(
                                         12.0,
-                                        Length.LengthUnit.INCHES));
+                                        LengthUnit.INCHES));
 
         Length expected =
                 new Length(
                         2.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -511,18 +511,18 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         12.0,
-                        Length.LengthUnit.INCHES)
+                        LengthUnit.INCHES)
 
                         .add(
 
                                 new Length(
                                         1.0,
-                                        Length.LengthUnit.FEET));
+                                        LengthUnit.FEET));
 
         Length expected =
                 new Length(
                         24.0,
-                        Length.LengthUnit.INCHES);
+                        LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
@@ -533,18 +533,18 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         1.0,
-                        Length.LengthUnit.YARDS)
+                        LengthUnit.YARDS)
 
                         .add(
 
                                 new Length(
                                         3.0,
-                                        Length.LengthUnit.FEET));
+                                        LengthUnit.FEET));
 
         Length expected =
                 new Length(
                         2.0,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.YARDS);
 
         assertEquals(expected, result);
     }
@@ -555,24 +555,24 @@ public class QuantityMeasurementAppTest {
         Length result1 =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .add(
 
                                 new Length(
                                         12.0,
-                                        Length.LengthUnit.INCHES));
+                                        LengthUnit.INCHES));
 
         Length result2 =
                 new Length(
                         12.0,
-                        Length.LengthUnit.INCHES)
+                        LengthUnit.INCHES)
 
                         .add(
 
                                 new Length(
                                         1.0,
-                                        Length.LengthUnit.FEET));
+                                        LengthUnit.FEET));
 
         assertEquals(result1, result2);
     }
@@ -583,18 +583,18 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         5.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .add(
 
                                 new Length(
                                         0.0,
-                                        Length.LengthUnit.FEET));
+                                        LengthUnit.FEET));
 
         Length expected =
                 new Length(
                         5.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -605,18 +605,18 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         5.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .add(
 
                                 new Length(
                                         -2.0,
-                                        Length.LengthUnit.FEET));
+                                        LengthUnit.FEET));
 
         Length expected =
                 new Length(
                         3.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -631,20 +631,20 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .add(
 
                                 new Length(
                                         12.0,
-                                        Length.LengthUnit.INCHES),
+                                        LengthUnit.INCHES),
 
-                                Length.LengthUnit.FEET);
+                                LengthUnit.FEET);
 
         Length expected =
                 new Length(
                         2.0,
-                        Length.LengthUnit.FEET);
+                        LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
@@ -655,159 +655,122 @@ public class QuantityMeasurementAppTest {
         Length result =
                 new Length(
                         1.0,
-                        Length.LengthUnit.FEET)
+                        LengthUnit.FEET)
 
                         .add(
 
                                 new Length(
                                         12.0,
-                                        Length.LengthUnit.INCHES),
+                                        LengthUnit.INCHES),
 
-                                Length.LengthUnit.INCHES);
+                                LengthUnit.INCHES);
 
         Length expected =
                 new Length(
                         24.0,
-                        Length.LengthUnit.INCHES);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testAddition_TargetUnit_Yards() {
-
-        Length result =
-                new Length(
-                        1.0,
-                        Length.LengthUnit.FEET)
-
-                        .add(
-
-                                new Length(
-                                        12.0,
-                                        Length.LengthUnit.INCHES),
-
-                                Length.LengthUnit.YARDS);
-
-        Length expected =
-                new Length(
-                        0.67,
-                        Length.LengthUnit.YARDS);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testAddition_TargetUnit_Centimeters() {
-
-        Length result =
-                new Length(
-                        1.0,
-                        Length.LengthUnit.INCHES)
-
-                        .add(
-
-                                new Length(
-                                        1.0,
-                                        Length.LengthUnit.INCHES),
-
-                                Length.LengthUnit.CENTIMETERS);
-
-        Length expected =
-                new Length(
-                        5.08,
-                        Length.LengthUnit.CENTIMETERS);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testAddition_NullTargetUnitException() {
-
-        Length length1 =
-                new Length(
-                        1.0,
-                        Length.LengthUnit.FEET);
-
-        Length length2 =
-                new Length(
-                        12.0,
-                        Length.LengthUnit.INCHES);
-
-        assertThrows(
-                IllegalArgumentException.class,
-
-                () -> length1.add(
-                        length2,
-                        null));
-    }
-
-    @Test
-    public void testAddition_NullLengthException() {
-
-        Length length =
-                new Length(
-                        1.0,
-                        Length.LengthUnit.FEET);
-
-        assertThrows(
-                IllegalArgumentException.class,
-
-                () -> length.add(
-                        null,
-                        Length.LengthUnit.FEET));
-    }
-
-    @Test
-    public void testLargeScaleAddition() {
-
-        Length result =
-                new Length(
-                        1000.0,
-                        Length.LengthUnit.FEET)
-
-                        .add(
-
-                                new Length(
-                                        500.0,
-                                        Length.LengthUnit.FEET),
-
-                                Length.LengthUnit.INCHES);
-
-        Length expected =
-                new Length(
-                        18000.0,
-                        Length.LengthUnit.INCHES);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testSmallScaleAddition() {
-
-        Length result =
-                new Length(
-                        12.0,
-                        Length.LengthUnit.INCHES)
-
-                        .add(
-
-                                new Length(
-                                        12.0,
-                                        Length.LengthUnit.INCHES),
-
-                                Length.LengthUnit.YARDS);
-
-        Length expected =
-                new Length(
-                        0.67,
-                        Length.LengthUnit.YARDS);
+                        LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
     // =====================================================
-// ADDITIONAL UC7 TESTS
+// UC7 - EXPLICIT TARGET UNIT ADDITION TESTS
 // =====================================================
+
+@Test
+public void testAddition_ExplicitTargetUnit_Feet() {
+
+    Length result =
+            new Length(
+                    1.0,
+                    LengthUnit.FEET)
+
+                    .add(
+
+                            new Length(
+                                    12.0,
+                                    LengthUnit.INCHES),
+
+                            LengthUnit.FEET);
+
+    Length expected =
+            new Length(
+                    2.0,
+                    LengthUnit.FEET);
+
+    assertEquals(expected, result);
+}
+
+@Test
+public void testAddition_ExplicitTargetUnit_Inches() {
+
+    Length result =
+            new Length(
+                    1.0,
+                    LengthUnit.FEET)
+
+                    .add(
+
+                            new Length(
+                                    12.0,
+                                    LengthUnit.INCHES),
+
+                            LengthUnit.INCHES);
+
+    Length expected =
+            new Length(
+                    24.0,
+                    LengthUnit.INCHES);
+
+    assertEquals(expected, result);
+}
+
+@Test
+public void testAddition_ExplicitTargetUnit_Yards() {
+
+    Length result =
+            new Length(
+                    1.0,
+                    LengthUnit.FEET)
+
+                    .add(
+
+                            new Length(
+                                    12.0,
+                                    LengthUnit.INCHES),
+
+                            LengthUnit.YARDS);
+
+    Length expected =
+            new Length(
+                    0.67,
+                    LengthUnit.YARDS);
+
+    assertEquals(expected, result);
+}
+
+@Test
+public void testAddition_ExplicitTargetUnit_Centimeters() {
+
+    Length result =
+            new Length(
+                    1.0,
+                    LengthUnit.INCHES)
+
+                    .add(
+
+                            new Length(
+                                    1.0,
+                                    LengthUnit.INCHES),
+
+                            LengthUnit.CENTIMETERS);
+
+    Length expected =
+            new Length(
+                    5.08,
+                    LengthUnit.CENTIMETERS);
+
+    assertEquals(expected, result);
+}
 
 @Test
 public void testAddition_ExplicitTargetUnit_SameAsFirstOperand() {
@@ -815,20 +778,20 @@ public void testAddition_ExplicitTargetUnit_SameAsFirstOperand() {
     Length result =
             new Length(
                     2.0,
-                    Length.LengthUnit.YARDS)
+                    LengthUnit.YARDS)
 
                     .add(
 
                             new Length(
                                     3.0,
-                                    Length.LengthUnit.FEET),
+                                    LengthUnit.FEET),
 
-                            Length.LengthUnit.YARDS);
+                            LengthUnit.YARDS);
 
     Length expected =
             new Length(
                     3.0,
-                    Length.LengthUnit.YARDS);
+                    LengthUnit.YARDS);
 
     assertEquals(expected, result);
 }
@@ -839,20 +802,20 @@ public void testAddition_ExplicitTargetUnit_SameAsSecondOperand() {
     Length result =
             new Length(
                     2.0,
-                    Length.LengthUnit.YARDS)
+                    LengthUnit.YARDS)
 
                     .add(
 
                             new Length(
                                     3.0,
-                                    Length.LengthUnit.FEET),
+                                    LengthUnit.FEET),
 
-                            Length.LengthUnit.FEET);
+                            LengthUnit.FEET);
 
     Length expected =
             new Length(
                     9.0,
-                    Length.LengthUnit.FEET);
+                    LengthUnit.FEET);
 
     assertEquals(expected, result);
 }
@@ -863,28 +826,28 @@ public void testAddition_ExplicitTargetUnit_Commutativity() {
     Length result1 =
             new Length(
                     1.0,
-                    Length.LengthUnit.FEET)
+                    LengthUnit.FEET)
 
                     .add(
 
                             new Length(
                                     12.0,
-                                    Length.LengthUnit.INCHES),
+                                    LengthUnit.INCHES),
 
-                            Length.LengthUnit.YARDS);
+                            LengthUnit.YARDS);
 
     Length result2 =
             new Length(
                     12.0,
-                    Length.LengthUnit.INCHES)
+                    LengthUnit.INCHES)
 
                     .add(
 
                             new Length(
                                     1.0,
-                                    Length.LengthUnit.FEET),
+                                    LengthUnit.FEET),
 
-                            Length.LengthUnit.YARDS);
+                            LengthUnit.YARDS);
 
     assertEquals(result1, result2);
 }
@@ -895,20 +858,20 @@ public void testAddition_ExplicitTargetUnit_WithZero() {
     Length result =
             new Length(
                     5.0,
-                    Length.LengthUnit.FEET)
+                    LengthUnit.FEET)
 
                     .add(
 
                             new Length(
                                     0.0,
-                                    Length.LengthUnit.INCHES),
+                                    LengthUnit.INCHES),
 
-                            Length.LengthUnit.YARDS);
+                            LengthUnit.YARDS);
 
     Length expected =
             new Length(
                     1.67,
-                    Length.LengthUnit.YARDS);
+                    LengthUnit.YARDS);
 
     assertEquals(expected, result);
 }
@@ -919,20 +882,88 @@ public void testAddition_ExplicitTargetUnit_NegativeValues() {
     Length result =
             new Length(
                     5.0,
-                    Length.LengthUnit.FEET)
+                    LengthUnit.FEET)
 
                     .add(
 
                             new Length(
                                     -2.0,
-                                    Length.LengthUnit.FEET),
+                                    LengthUnit.FEET),
 
-                            Length.LengthUnit.INCHES);
+                            LengthUnit.INCHES);
 
     Length expected =
             new Length(
                     36.0,
-                    Length.LengthUnit.INCHES);
+                    LengthUnit.INCHES);
+
+    assertEquals(expected, result);
+}
+
+@Test
+public void testAddition_ExplicitTargetUnit_NullTargetUnit() {
+
+    assertThrows(
+
+            IllegalArgumentException.class,
+
+            () -> new Length(
+                    1.0,
+                    LengthUnit.FEET)
+
+                    .add(
+
+                            new Length(
+                                    12.0,
+                                    LengthUnit.INCHES),
+
+                            null));
+}
+
+@Test
+public void testAddition_ExplicitTargetUnit_LargeToSmallScale() {
+
+    Length result =
+            new Length(
+                    1000.0,
+                    LengthUnit.FEET)
+
+                    .add(
+
+                            new Length(
+                                    500.0,
+                                    LengthUnit.FEET),
+
+                            LengthUnit.INCHES);
+
+    Length expected =
+            new Length(
+                    18000.0,
+                    LengthUnit.INCHES);
+
+    assertEquals(expected, result);
+}
+
+@Test
+public void testAddition_ExplicitTargetUnit_SmallToLargeScale() {
+
+    Length result =
+            new Length(
+                    12.0,
+                    LengthUnit.INCHES)
+
+                    .add(
+
+                            new Length(
+                                    12.0,
+                                    LengthUnit.INCHES),
+
+                            LengthUnit.YARDS);
+
+    Length expected =
+            new Length(
+                    0.67,
+                    LengthUnit.YARDS);
 
     assertEquals(expected, result);
 }
@@ -943,62 +974,52 @@ public void testAddition_ExplicitTargetUnit_AllUnitCombinations() {
     Length feet =
             new Length(
                     1.0,
-                    Length.LengthUnit.FEET);
+                    LengthUnit.FEET);
 
     Length inches =
             new Length(
                     12.0,
-                    Length.LengthUnit.INCHES);
-
-    Length yards =
-            new Length(
-                    0.67,
-                    Length.LengthUnit.YARDS);
-
-    Length centimeters =
-            new Length(
-                    60.96,
-                    Length.LengthUnit.CENTIMETERS);
+                    LengthUnit.INCHES);
 
     assertEquals(
 
             new Length(
                     2.0,
-                    Length.LengthUnit.FEET),
+                    LengthUnit.FEET),
 
             feet.add(
                     inches,
-                    Length.LengthUnit.FEET));
+                    LengthUnit.FEET));
 
     assertEquals(
 
             new Length(
                     24.0,
-                    Length.LengthUnit.INCHES),
+                    LengthUnit.INCHES),
 
             feet.add(
                     inches,
-                    Length.LengthUnit.INCHES));
+                    LengthUnit.INCHES));
 
     assertEquals(
 
             new Length(
                     0.67,
-                    Length.LengthUnit.YARDS),
+                    LengthUnit.YARDS),
 
             feet.add(
                     inches,
-                    Length.LengthUnit.YARDS));
+                    LengthUnit.YARDS));
 
     assertEquals(
 
             new Length(
                     60.96,
-                    Length.LengthUnit.CENTIMETERS),
+                    LengthUnit.CENTIMETERS),
 
             feet.add(
                     inches,
-                    Length.LengthUnit.CENTIMETERS));
+                    LengthUnit.CENTIMETERS));
 }
 
 @Test
@@ -1007,20 +1028,20 @@ public void testAddition_ExplicitTargetUnit_PrecisionTolerance() {
     Length result =
             new Length(
                     1.0,
-                    Length.LengthUnit.FEET)
+                    LengthUnit.FEET)
 
                     .add(
 
                             new Length(
                                     12.0,
-                                    Length.LengthUnit.INCHES),
+                                    LengthUnit.INCHES),
 
-                            Length.LengthUnit.YARDS);
+                            LengthUnit.YARDS);
 
     Length expected =
             new Length(
                     0.67,
-                    Length.LengthUnit.YARDS);
+                    LengthUnit.YARDS);
 
     assertEquals(expected, result);
 }
