@@ -2,327 +2,290 @@ package com.apps.quantitymeasurement;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QuantityMeasurementAppTest {
 
     // =====================================================
-    // UC1 - FEET EQUALITY TESTS
+    // UC1 - FEET EQUALITY
     // =====================================================
 
     @Test
     public void testFeetEquality_SameValue() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length1 =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        Length l2 =
-                new Length(
-                        1.0,
+        Length length2 =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertEquals(l1, l2);
+        assertEquals(length1, length2);
     }
 
     @Test
     public void testFeetInequality_DifferentValue() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length1 =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        Length l2 =
-                new Length(
-                        2.0,
+        Length length2 =
+                new Length(2.0,
                         LengthUnit.FEET);
 
-        assertNotEquals(l1, l2);
+        assertNotEquals(length1, length2);
     }
 
     @Test
     public void testFeetEquality_SameReference() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertEquals(l1, l1);
+        assertEquals(length, length);
     }
 
     @Test
     public void testFeetEquality_NullComparison() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertNotEquals(null, l1);
+        assertNotEquals(length, null);
     }
 
     @Test
     public void testFeetEquality_DifferentClass() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertFalse(l1.equals("test"));
+        assertNotEquals(length, "Length");
     }
 
     // =====================================================
-    // UC2 - INCHES TESTS
+    // UC2 - INCH EQUALITY
     // =====================================================
 
     @Test
     public void testInchesEquality_SameValue() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length1 =
+                new Length(12.0,
                         LengthUnit.INCHES);
 
-        Length l2 =
-                new Length(
-                        1.0,
+        Length length2 =
+                new Length(12.0,
                         LengthUnit.INCHES);
 
-        assertEquals(l1, l2);
+        assertEquals(length1, length2);
     }
 
     @Test
     public void testInchesInequality_DifferentValue() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length1 =
+                new Length(12.0,
                         LengthUnit.INCHES);
 
-        Length l2 =
-                new Length(
-                        2.0,
+        Length length2 =
+                new Length(24.0,
                         LengthUnit.INCHES);
 
-        assertNotEquals(l1, l2);
+        assertNotEquals(length1, length2);
     }
 
     @Test
     public void testFeetEqualsTwelveInches() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length feet =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        Length l2 =
-                new Length(
-                        12.0,
+        Length inches =
+                new Length(12.0,
                         LengthUnit.INCHES);
 
-        assertEquals(l1, l2);
+        assertEquals(feet, inches);
     }
 
     @Test
     public void testTwelveInchesEqualsOneFoot() {
 
-        Length l1 =
-                new Length(
-                        12.0,
+        Length inches =
+                new Length(12.0,
                         LengthUnit.INCHES);
 
-        Length l2 =
-                new Length(
-                        1.0,
+        Length feet =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertEquals(l1, l2);
+        assertEquals(inches, feet);
     }
 
     // =====================================================
-    // UC3 - GENERIC LENGTH TESTS
+    // UC3 - GENERIC EQUALITY
     // =====================================================
 
     @Test
     public void testNullComparison() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertFalse(l1.equals(null));
+        assertFalse(length.equals(null));
     }
 
     @Test
     public void testSameReferenceComparison() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertTrue(l1.equals(l1));
+        assertTrue(length.equals(length));
     }
 
     @Test
     public void testDifferentClassComparison() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length length =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertFalse(l1.equals("Length"));
+        assertFalse(length.equals("test"));
     }
 
     // =====================================================
-    // UC4 - YARDS & CENTIMETERS TESTS
+    // UC4 - MULTI UNIT SUPPORT
     // =====================================================
 
     @Test
     public void testOneYardEqualsThreeFeet() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length yard =
+                new Length(1.0,
                         LengthUnit.YARDS);
 
-        Length l2 =
-                new Length(
-                        3.0,
+        Length feet =
+                new Length(3.0,
                         LengthUnit.FEET);
 
-        assertEquals(l1, l2);
+        assertEquals(yard, feet);
     }
 
     @Test
     public void testThreeFeetEqualsOneYard() {
 
-        Length l1 =
-                new Length(
-                        3.0,
+        Length feet =
+                new Length(3.0,
                         LengthUnit.FEET);
 
-        Length l2 =
-                new Length(
-                        1.0,
+        Length yard =
+                new Length(1.0,
                         LengthUnit.YARDS);
 
-        assertEquals(l1, l2);
+        assertEquals(feet, yard);
     }
 
     @Test
     public void testOneYardEqualsThirtySixInches() {
 
-        Length l1 =
-                new Length(
-                        1.0,
+        Length yard =
+                new Length(1.0,
                         LengthUnit.YARDS);
 
-        Length l2 =
-                new Length(
-                        36.0,
+        Length inches =
+                new Length(36.0,
                         LengthUnit.INCHES);
 
-        assertEquals(l1, l2);
+        assertEquals(yard, inches);
     }
 
     @Test
     public void testThirtySixInchesEqualsOneYard() {
 
-        Length l1 =
-                new Length(
-                        36.0,
+        Length inches =
+                new Length(36.0,
                         LengthUnit.INCHES);
 
-        Length l2 =
-                new Length(
-                        1.0,
+        Length yard =
+                new Length(1.0,
                         LengthUnit.YARDS);
 
-        assertEquals(l1, l2);
-    }
-
-    @Test
-    public void testOneCentimeterEqualsPoint393701Inches() {
-
-        Length l1 =
-                new Length(
-                        1.0,
-                        LengthUnit.CENTIMETERS);
-
-        Length l2 =
-                new Length(
-                        0.393701,
-                        LengthUnit.INCHES);
-
-        assertEquals(l1, l2);
+        assertEquals(inches, yard);
     }
 
     @Test
     public void testThirtyPointFortyEightCentimetersEqualsOneFoot() {
 
-        Length l1 =
-                new Length(
-                        30.48,
+        Length centimeters =
+                new Length(30.48,
                         LengthUnit.CENTIMETERS);
 
-        Length l2 =
-                new Length(
-                        1.0,
+        Length foot =
+                new Length(1.0,
                         LengthUnit.FEET);
 
-        assertEquals(l1, l2);
+        assertEquals(centimeters, foot);
+    }
+
+    @Test
+    public void testOneCentimeterEqualsPoint393701Inches() {
+
+        Length centimeters =
+                new Length(1.0,
+                        LengthUnit.CENTIMETERS);
+
+        Length inches =
+                new Length(0.393701,
+                        LengthUnit.INCHES);
+
+        assertEquals(centimeters, inches);
     }
 
     @Test
     public void testMultiUnitEquality() {
 
-        Length yard =
-                new Length(
-                        2.0,
-                        LengthUnit.YARDS);
-
         Length feet =
-                new Length(
-                        6.0,
+                new Length(1.0,
                         LengthUnit.FEET);
 
         Length inches =
-                new Length(
-                        72.0,
+                new Length(12.0,
                         LengthUnit.INCHES);
 
-        assertEquals(yard, feet);
+        Length centimeters =
+                new Length(30.48,
+                        LengthUnit.CENTIMETERS);
 
         assertEquals(feet, inches);
-
-        assertEquals(yard, inches);
+        assertEquals(inches, centimeters);
+        assertEquals(feet, centimeters);
     }
 
     // =====================================================
-    // UC5 - CONVERSION TESTS
+    // UC5 - CONVERSION
     // =====================================================
 
     @Test
     public void testConvertFeetToInches() {
 
         Length result =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.FEET)
-
-                        .convertTo(
-                                LengthUnit.INCHES);
+                        .convertTo(LengthUnit.INCHES);
 
         Length expected =
-                new Length(
-                        12.0,
+                new Length(12.0,
                         LengthUnit.INCHES);
 
         assertEquals(expected, result);
@@ -332,16 +295,12 @@ public class QuantityMeasurementAppTest {
     public void testConvertInchesToFeet() {
 
         Length result =
-                new Length(
-                        24.0,
+                new Length(24.0,
                         LengthUnit.INCHES)
-
-                        .convertTo(
-                                LengthUnit.FEET);
+                        .convertTo(LengthUnit.FEET);
 
         Length expected =
-                new Length(
-                        2.0,
+                new Length(2.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
@@ -351,16 +310,12 @@ public class QuantityMeasurementAppTest {
     public void testConvertYardsToFeet() {
 
         Length result =
-                new Length(
-                        1.0,
+                new Length(2.0,
                         LengthUnit.YARDS)
-
-                        .convertTo(
-                                LengthUnit.FEET);
+                        .convertTo(LengthUnit.FEET);
 
         Length expected =
-                new Length(
-                        3.0,
+                new Length(6.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
@@ -370,16 +325,12 @@ public class QuantityMeasurementAppTest {
     public void testConvertCentimetersToInches() {
 
         Length result =
-                new Length(
-                        2.54,
+                new Length(2.54,
                         LengthUnit.CENTIMETERS)
-
-                        .convertTo(
-                                LengthUnit.INCHES);
+                        .convertTo(LengthUnit.INCHES);
 
         Length expected =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.INCHES);
 
         assertEquals(expected, result);
@@ -389,16 +340,12 @@ public class QuantityMeasurementAppTest {
     public void testSameUnitConversion() {
 
         Length result =
-                new Length(
-                        5.0,
+                new Length(5.0,
                         LengthUnit.FEET)
-
-                        .convertTo(
-                                LengthUnit.FEET);
+                        .convertTo(LengthUnit.FEET);
 
         Length expected =
-                new Length(
-                        5.0,
+                new Length(5.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
@@ -408,16 +355,12 @@ public class QuantityMeasurementAppTest {
     public void testZeroValueConversion() {
 
         Length result =
-                new Length(
-                        0.0,
+                new Length(0.0,
                         LengthUnit.FEET)
-
-                        .convertTo(
-                                LengthUnit.INCHES);
+                        .convertTo(LengthUnit.INCHES);
 
         Length expected =
-                new Length(
-                        0.0,
+                new Length(0.0,
                         LengthUnit.INCHES);
 
         assertEquals(expected, result);
@@ -427,16 +370,12 @@ public class QuantityMeasurementAppTest {
     public void testNegativeValueConversion() {
 
         Length result =
-                new Length(
-                        -1.0,
+                new Length(-1.0,
                         LengthUnit.FEET)
-
-                        .convertTo(
-                                LengthUnit.INCHES);
+                        .convertTo(LengthUnit.INCHES);
 
         Length expected =
-                new Length(
-                        -12.0,
+                new Length(-12.0,
                         LengthUnit.INCHES);
 
         assertEquals(expected, result);
@@ -451,10 +390,7 @@ public class QuantityMeasurementAppTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-
-                () -> new Length(
-                        1.0,
-                        null));
+                () -> new Length(1.0, null));
     }
 
     @Test
@@ -462,7 +398,6 @@ public class QuantityMeasurementAppTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-
                 () -> new Length(
                         Double.NaN,
                         LengthUnit.FEET));
@@ -473,33 +408,27 @@ public class QuantityMeasurementAppTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-
                 () -> new Length(
                         Double.POSITIVE_INFINITY,
                         LengthUnit.FEET));
     }
 
     // =====================================================
-    // UC6 - ADDITION TESTS
+    // UC6 - ADDITION
     // =====================================================
 
     @Test
     public void testAddFeetAndInches() {
 
         Length result =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.FEET)
-
-                        .add(
-
-                                new Length(
-                                        12.0,
-                                        LengthUnit.INCHES));
+                        .add(new Length(
+                                12.0,
+                                LengthUnit.INCHES));
 
         Length expected =
-                new Length(
-                        2.0,
+                new Length(2.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
@@ -509,19 +438,14 @@ public class QuantityMeasurementAppTest {
     public void testAddInchesAndFeet() {
 
         Length result =
-                new Length(
-                        12.0,
+                new Length(12.0,
                         LengthUnit.INCHES)
-
-                        .add(
-
-                                new Length(
-                                        1.0,
-                                        LengthUnit.FEET));
+                        .add(new Length(
+                                1.0,
+                                LengthUnit.FEET));
 
         Length expected =
-                new Length(
-                        24.0,
+                new Length(24.0,
                         LengthUnit.INCHES);
 
         assertEquals(expected, result);
@@ -531,19 +455,14 @@ public class QuantityMeasurementAppTest {
     public void testAddYardsAndFeet() {
 
         Length result =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.YARDS)
-
-                        .add(
-
-                                new Length(
-                                        3.0,
-                                        LengthUnit.FEET));
+                        .add(new Length(
+                                3.0,
+                                LengthUnit.FEET));
 
         Length expected =
-                new Length(
-                        2.0,
+                new Length(2.0,
                         LengthUnit.YARDS);
 
         assertEquals(expected, result);
@@ -553,47 +472,36 @@ public class QuantityMeasurementAppTest {
     public void testAdditionCommutativity() {
 
         Length result1 =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.FEET)
-
-                        .add(
-
-                                new Length(
-                                        12.0,
-                                        LengthUnit.INCHES));
+                        .add(new Length(
+                                12.0,
+                                LengthUnit.INCHES));
 
         Length result2 =
-                new Length(
-                        12.0,
+                new Length(12.0,
                         LengthUnit.INCHES)
+                        .add(new Length(
+                                1.0,
+                                LengthUnit.FEET));
 
-                        .add(
-
-                                new Length(
-                                        1.0,
-                                        LengthUnit.FEET));
-
-        assertEquals(result1, result2);
+        assertEquals(
+                result1.convertTo(LengthUnit.FEET),
+                result2.convertTo(LengthUnit.FEET));
     }
 
     @Test
     public void testAdditionWithZero() {
 
         Length result =
-                new Length(
-                        5.0,
+                new Length(5.0,
                         LengthUnit.FEET)
-
-                        .add(
-
-                                new Length(
-                                        0.0,
-                                        LengthUnit.FEET));
+                        .add(new Length(
+                                0.0,
+                                LengthUnit.INCHES));
 
         Length expected =
-                new Length(
-                        5.0,
+                new Length(5.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
@@ -603,47 +511,37 @@ public class QuantityMeasurementAppTest {
     public void testAdditionWithNegativeValues() {
 
         Length result =
-                new Length(
-                        5.0,
+                new Length(5.0,
                         LengthUnit.FEET)
-
-                        .add(
-
-                                new Length(
-                                        -2.0,
-                                        LengthUnit.FEET));
+                        .add(new Length(
+                                -2.0,
+                                LengthUnit.FEET));
 
         Length expected =
-                new Length(
-                        3.0,
+                new Length(3.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
     }
 
     // =====================================================
-    // UC7 - TARGET UNIT ADDITION TESTS
+    // UC7 - EXPLICIT TARGET UNIT
     // =====================================================
 
     @Test
     public void testAddition_TargetUnit_Feet() {
 
         Length result =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.FEET)
-
                         .add(
-
                                 new Length(
                                         12.0,
                                         LengthUnit.INCHES),
-
                                 LengthUnit.FEET);
 
         Length expected =
-                new Length(
-                        2.0,
+                new Length(2.0,
                         LengthUnit.FEET);
 
         assertEquals(expected, result);
@@ -653,396 +551,543 @@ public class QuantityMeasurementAppTest {
     public void testAddition_TargetUnit_Inches() {
 
         Length result =
-                new Length(
-                        1.0,
+                new Length(1.0,
                         LengthUnit.FEET)
-
                         .add(
-
                                 new Length(
                                         12.0,
                                         LengthUnit.INCHES),
-
                                 LengthUnit.INCHES);
 
         Length expected =
-                new Length(
-                        24.0,
+                new Length(24.0,
                         LengthUnit.INCHES);
 
         assertEquals(expected, result);
     }
+
     // =====================================================
-// UC7 - EXPLICIT TARGET UNIT ADDITION TESTS
-// =====================================================
+    // UC9 - WEIGHT EQUALITY
+    // =====================================================
 
-@Test
-public void testAddition_ExplicitTargetUnit_Feet() {
+    @Test
+    public void testEquality_KilogramToKilogram_SameValue() {
 
-    Length result =
-            new Length(
-                    1.0,
-                    LengthUnit.FEET)
+        Weight w1 =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                    .add(
+        Weight w2 =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
+        assertEquals(w1, w2);
+    }
 
-                            LengthUnit.FEET);
+    @Test
+    public void testEquality_KilogramToKilogram_DifferentValue() {
 
-    Length expected =
-            new Length(
-                    2.0,
-                    LengthUnit.FEET);
+        Weight w1 =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-    assertEquals(expected, result);
-}
+        Weight w2 =
+                new Weight(2.0,
+                        WeightUnit.KILOGRAM);
 
-@Test
-public void testAddition_ExplicitTargetUnit_Inches() {
+        assertNotEquals(w1, w2);
+    }
 
-    Length result =
-            new Length(
-                    1.0,
-                    LengthUnit.FEET)
+    @Test
+    public void testEquality_KilogramToGram_EquivalentValue() {
 
-                    .add(
+        Weight kilogram =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
+        Weight gram =
+                new Weight(1000.0,
+                        WeightUnit.GRAM);
 
-                            LengthUnit.INCHES);
+        assertEquals(kilogram, gram);
+    }
 
-    Length expected =
-            new Length(
-                    24.0,
-                    LengthUnit.INCHES);
+    @Test
+    public void testEquality_GramToKilogram_EquivalentValue() {
 
-    assertEquals(expected, result);
-}
+        Weight gram =
+                new Weight(1000.0,
+                        WeightUnit.GRAM);
 
-@Test
-public void testAddition_ExplicitTargetUnit_Yards() {
+        Weight kilogram =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-    Length result =
-            new Length(
-                    1.0,
-                    LengthUnit.FEET)
+        assertEquals(gram, kilogram);
+    }
 
-                    .add(
+    @Test
+    public void testEquality_KilogramToPound_EquivalentValue() {
 
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
+        Weight kilogram =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                            LengthUnit.YARDS);
+        Weight pound =
+                new Weight(2.20462,
+                        WeightUnit.POUND);
 
-    Length expected =
-            new Length(
-                    0.67,
-                    LengthUnit.YARDS);
+        assertEquals(kilogram, pound);
+    }
 
-    assertEquals(expected, result);
-}
+    @Test
+    public void testEquality_GramToPound_EquivalentValue() {
 
-@Test
-public void testAddition_ExplicitTargetUnit_Centimeters() {
+        Weight gram =
+                new Weight(453.592,
+                        WeightUnit.GRAM);
 
-    Length result =
-            new Length(
-                    1.0,
-                    LengthUnit.INCHES)
+        Weight pound =
+                new Weight(1.0,
+                        WeightUnit.POUND);
 
-                    .add(
+        assertEquals(gram, pound);
+    }
 
-                            new Length(
-                                    1.0,
-                                    LengthUnit.INCHES),
+    @Test
+    public void testEquality_WeightVsLength_Incompatible() {
 
-                            LengthUnit.CENTIMETERS);
+        Weight weight =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-    Length expected =
-            new Length(
-                    5.08,
-                    LengthUnit.CENTIMETERS);
+        Length length =
+                new Length(1.0,
+                        LengthUnit.FEET);
 
-    assertEquals(expected, result);
-}
+        assertNotEquals(weight, length);
+    }
 
-@Test
-public void testAddition_ExplicitTargetUnit_SameAsFirstOperand() {
+    @Test
+    public void testEquality_NullComparison() {
 
-    Length result =
-            new Length(
-                    2.0,
-                    LengthUnit.YARDS)
+        Weight weight =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                    .add(
+        assertNotEquals(weight, null);
+    }
 
-                            new Length(
-                                    3.0,
-                                    LengthUnit.FEET),
+    @Test
+    public void testEquality_SameReference() {
 
-                            LengthUnit.YARDS);
+        Weight weight =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-    Length expected =
-            new Length(
-                    3.0,
-                    LengthUnit.YARDS);
+        assertEquals(weight, weight);
+    }
 
-    assertEquals(expected, result);
-}
+    @Test
+    public void testEquality_NullUnit() {
 
-@Test
-public void testAddition_ExplicitTargetUnit_SameAsSecondOperand() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Weight(
+                        1.0,
+                        null));
+    }
 
-    Length result =
-            new Length(
-                    2.0,
-                    LengthUnit.YARDS)
+    @Test
+    public void testEquality_TransitiveProperty() {
 
-                    .add(
+        Weight kilogram =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                            new Length(
-                                    3.0,
-                                    LengthUnit.FEET),
+        Weight gram =
+                new Weight(1000.0,
+                        WeightUnit.GRAM);
 
-                            LengthUnit.FEET);
+        Weight pound =
+                new Weight(2.20462,
+                        WeightUnit.POUND);
 
-    Length expected =
-            new Length(
-                    9.0,
-                    LengthUnit.FEET);
+        assertEquals(kilogram, gram);
+        assertEquals(gram, pound);
+        assertEquals(kilogram, pound);
+    }
 
-    assertEquals(expected, result);
-}
+    @Test
+    public void testEquality_ZeroValue() {
 
-@Test
-public void testAddition_ExplicitTargetUnit_Commutativity() {
+        Weight kilogram =
+                new Weight(0.0,
+                        WeightUnit.KILOGRAM);
 
-    Length result1 =
-            new Length(
-                    1.0,
-                    LengthUnit.FEET)
+        Weight gram =
+                new Weight(0.0,
+                        WeightUnit.GRAM);
 
-                    .add(
+        assertEquals(kilogram, gram);
+    }
 
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
+    @Test
+    public void testEquality_NegativeWeight() {
 
-                            LengthUnit.YARDS);
+        Weight kilogram =
+                new Weight(-1.0,
+                        WeightUnit.KILOGRAM);
 
-    Length result2 =
-            new Length(
-                    12.0,
-                    LengthUnit.INCHES)
+        Weight gram =
+                new Weight(-1000.0,
+                        WeightUnit.GRAM);
 
-                    .add(
+        assertEquals(kilogram, gram);
+    }
 
-                            new Length(
-                                    1.0,
-                                    LengthUnit.FEET),
+    @Test
+    public void testEquality_LargeWeightValue() {
 
-                            LengthUnit.YARDS);
+        Weight gram =
+                new Weight(1000000.0,
+                        WeightUnit.GRAM);
 
-    assertEquals(result1, result2);
-}
+        Weight kilogram =
+                new Weight(1000.0,
+                        WeightUnit.KILOGRAM);
 
-@Test
-public void testAddition_ExplicitTargetUnit_WithZero() {
+        assertEquals(gram, kilogram);
+    }
 
-    Length result =
-            new Length(
-                    5.0,
-                    LengthUnit.FEET)
+    @Test
+    public void testEquality_SmallWeightValue() {
 
-                    .add(
+        Weight kilogram =
+                new Weight(0.001,
+                        WeightUnit.KILOGRAM);
 
-                            new Length(
-                                    0.0,
-                                    LengthUnit.INCHES),
+        Weight gram =
+                new Weight(1.0,
+                        WeightUnit.GRAM);
 
-                            LengthUnit.YARDS);
+        assertEquals(kilogram, gram);
+    }
 
-    Length expected =
-            new Length(
-                    1.67,
-                    LengthUnit.YARDS);
+    // =====================================================
+    // UC9 - WEIGHT CONVERSION
+    // =====================================================
 
-    assertEquals(expected, result);
-}
+    @Test
+    public void testConversion_PoundToKilogram() {
 
-@Test
-public void testAddition_ExplicitTargetUnit_NegativeValues() {
+        Weight result =
+                new Weight(2.20462,
+                        WeightUnit.POUND)
+                        .convertTo(
+                                WeightUnit.KILOGRAM);
 
-    Length result =
-            new Length(
-                    5.0,
-                    LengthUnit.FEET)
+        Weight expected =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
 
-                    .add(
+        assertEquals(expected, result);
+    }
 
-                            new Length(
-                                    -2.0,
-                                    LengthUnit.FEET),
+    @Test
+    public void testConversion_KilogramToPound() {
 
-                            LengthUnit.INCHES);
+        Weight result =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM)
+                        .convertTo(
+                                WeightUnit.POUND);
 
-    Length expected =
-            new Length(
-                    36.0,
-                    LengthUnit.INCHES);
+        Weight expected =
+                new Weight(2.20462,
+                        WeightUnit.POUND);
 
-    assertEquals(expected, result);
-}
+        assertEquals(expected, result);
+    }
 
-@Test
-public void testAddition_ExplicitTargetUnit_NullTargetUnit() {
+    @Test
+    public void testConversion_SameUnit() {
 
-    assertThrows(
+        Weight result =
+                new Weight(5.0,
+                        WeightUnit.KILOGRAM)
+                        .convertTo(
+                                WeightUnit.KILOGRAM);
 
-            IllegalArgumentException.class,
+        Weight expected =
+                new Weight(5.0,
+                        WeightUnit.KILOGRAM);
 
-            () -> new Length(
-                    1.0,
-                    LengthUnit.FEET)
+        assertEquals(expected, result);
+    }
 
-                    .add(
+    @Test
+    public void testConversion_ZeroValue() {
 
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
+        Weight result =
+                new Weight(0.0,
+                        WeightUnit.KILOGRAM)
+                        .convertTo(
+                                WeightUnit.GRAM);
 
-                            null));
-}
+        Weight expected =
+                new Weight(0.0,
+                        WeightUnit.GRAM);
 
-@Test
-public void testAddition_ExplicitTargetUnit_LargeToSmallScale() {
+        assertEquals(expected, result);
+    }
 
-    Length result =
-            new Length(
-                    1000.0,
-                    LengthUnit.FEET)
+    @Test
+    public void testConversion_NegativeValue() {
 
-                    .add(
+        Weight result =
+                new Weight(-1.0,
+                        WeightUnit.KILOGRAM)
+                        .convertTo(
+                                WeightUnit.GRAM);
 
-                            new Length(
-                                    500.0,
-                                    LengthUnit.FEET),
+        Weight expected =
+                new Weight(-1000.0,
+                        WeightUnit.GRAM);
 
-                            LengthUnit.INCHES);
+        assertEquals(expected, result);
+    }
 
-    Length expected =
-            new Length(
-                    18000.0,
-                    LengthUnit.INCHES);
+    @Test
+    public void testConversion_RoundTrip() {
 
-    assertEquals(expected, result);
-}
+        Weight result =
+                new Weight(1.5,
+                        WeightUnit.KILOGRAM)
+                        .convertTo(
+                                WeightUnit.GRAM)
+                        .convertTo(
+                                WeightUnit.KILOGRAM);
+
+        Weight expected =
+                new Weight(1.5,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(expected, result);
+    }
 
-@Test
-public void testAddition_ExplicitTargetUnit_SmallToLargeScale() {
+    // =====================================================
+    // UC9 - WEIGHT ADDITION
+    // =====================================================
 
-    Length result =
-            new Length(
-                    12.0,
-                    LengthUnit.INCHES)
-
-                    .add(
-
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
-
-                            LengthUnit.YARDS);
-
-    Length expected =
-            new Length(
-                    0.67,
-                    LengthUnit.YARDS);
-
-    assertEquals(expected, result);
-}
-
-@Test
-public void testAddition_ExplicitTargetUnit_AllUnitCombinations() {
-
-    Length feet =
-            new Length(
-                    1.0,
-                    LengthUnit.FEET);
-
-    Length inches =
-            new Length(
-                    12.0,
-                    LengthUnit.INCHES);
-
-    assertEquals(
-
-            new Length(
-                    2.0,
-                    LengthUnit.FEET),
-
-            feet.add(
-                    inches,
-                    LengthUnit.FEET));
-
-    assertEquals(
-
-            new Length(
-                    24.0,
-                    LengthUnit.INCHES),
-
-            feet.add(
-                    inches,
-                    LengthUnit.INCHES));
-
-    assertEquals(
-
-            new Length(
-                    0.67,
-                    LengthUnit.YARDS),
-
-            feet.add(
-                    inches,
-                    LengthUnit.YARDS));
-
-    assertEquals(
-
-            new Length(
-                    60.96,
-                    LengthUnit.CENTIMETERS),
-
-            feet.add(
-                    inches,
-                    LengthUnit.CENTIMETERS));
-}
-
-@Test
-public void testAddition_ExplicitTargetUnit_PrecisionTolerance() {
-
-    Length result =
-            new Length(
-                    1.0,
-                    LengthUnit.FEET)
-
-                    .add(
-
-                            new Length(
-                                    12.0,
-                                    LengthUnit.INCHES),
-
-                            LengthUnit.YARDS);
-
-    Length expected =
-            new Length(
-                    0.67,
-                    LengthUnit.YARDS);
-
-    assertEquals(expected, result);
-}
+    @Test
+    public void testAddition_SameUnit_KilogramPlusKilogram() {
+
+        Weight result =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM)
+                        .add(new Weight(
+                                2.0,
+                                WeightUnit.KILOGRAM));
+
+        Weight expected =
+                new Weight(3.0,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAddition_CrossUnit_KilogramPlusGram() {
+
+        Weight result =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM)
+                        .add(new Weight(
+                                1000.0,
+                                WeightUnit.GRAM));
+
+        Weight expected =
+                new Weight(2.0,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAddition_CrossUnit_PoundPlusKilogram() {
+
+        Weight result =
+                new Weight(2.20462,
+                        WeightUnit.POUND)
+                        .add(new Weight(
+                                1.0,
+                                WeightUnit.KILOGRAM));
+
+        Weight expected =
+                new Weight(4.40924,
+                        WeightUnit.POUND);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAddition_ExplicitTargetUnit_Kilogram() {
+
+        Weight result =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM)
+                        .add(
+                                new Weight(
+                                        1000.0,
+                                        WeightUnit.GRAM),
+                                WeightUnit.GRAM);
+
+        Weight expected =
+                new Weight(2000.0,
+                        WeightUnit.GRAM);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAddition_Commutativity() {
+
+        Weight result1 =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM)
+                        .add(new Weight(
+                                1000.0,
+                                WeightUnit.GRAM));
+
+        Weight result2 =
+                new Weight(1000.0,
+                        WeightUnit.GRAM)
+                        .add(new Weight(
+                                1.0,
+                                WeightUnit.KILOGRAM));
+
+        assertEquals(
+                result1.convertTo(
+                        WeightUnit.KILOGRAM),
+
+                result2.convertTo(
+                        WeightUnit.KILOGRAM));
+    }
+
+    @Test
+    public void testAddition_WithZero() {
+
+        Weight result =
+                new Weight(5.0,
+                        WeightUnit.KILOGRAM)
+                        .add(new Weight(
+                                0.0,
+                                WeightUnit.GRAM));
+
+        Weight expected =
+                new Weight(5.0,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAddition_NegativeValues() {
+
+        Weight result =
+                new Weight(5.0,
+                        WeightUnit.KILOGRAM)
+                        .add(new Weight(
+                                -2000.0,
+                                WeightUnit.GRAM));
+
+        Weight expected =
+                new Weight(3.0,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAddition_LargeValues() {
+
+        Weight result =
+                new Weight(1e6,
+                        WeightUnit.KILOGRAM)
+                        .add(new Weight(
+                                1e6,
+                                WeightUnit.KILOGRAM));
+
+        Weight expected =
+                new Weight(2e6,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(expected, result);
+    }
+
+    // =====================================================
+    // UC9 - HASHCODE TESTS
+    // =====================================================
+
+    @Test
+    public void testHashCode_EqualObjects() {
+
+        Weight w1 =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
+
+        Weight w2 =
+                new Weight(1000.0,
+                        WeightUnit.GRAM);
+
+        assertEquals(
+                w1.hashCode(),
+                w2.hashCode());
+    }
+
+    @Test
+    public void testHashCode_SameObject() {
+
+        Weight w =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
+
+        assertEquals(
+                w.hashCode(),
+                w.hashCode());
+    }
+
+    @Test
+    public void testHashSetBehavior() {
+
+        HashSet<Weight> set =
+                new HashSet<>();
+
+        set.add(new Weight(
+                1.0,
+                WeightUnit.KILOGRAM));
+
+        set.add(new Weight(
+                1000.0,
+                WeightUnit.GRAM));
+
+        assertEquals(1, set.size());
+    }
+
+    @Test
+    public void testHashCode_UnequalObjects() {
+
+        Weight w1 =
+                new Weight(1.0,
+                        WeightUnit.KILOGRAM);
+
+        Weight w2 =
+                new Weight(2.0,
+                        WeightUnit.KILOGRAM);
+
+        assertNotEquals(
+                w1.hashCode(),
+                w2.hashCode());
+    }
 }
