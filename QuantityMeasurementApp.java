@@ -104,5 +104,41 @@ public class QuantityMeasurementApp {
                         + " "
                         + sumWeightInGrams.getUnit()
         );
+        // Volume Equality
+Quantity<VolumeUnit> volume1 =
+        new Quantity<>(1.0, VolumeUnit.LITRE);
+
+Quantity<VolumeUnit> volume2 =
+        new Quantity<>(1000.0, VolumeUnit.MILLILITRE);
+
+System.out.println(
+        "Are volumes equal? "
+                + demonstrateEquality(volume1, volume2)
+);
+
+// Volume Conversion
+Quantity<VolumeUnit> convertedVolume =
+        demonstrateConversion(
+                volume1,
+                VolumeUnit.MILLILITRE
+        );
+
+System.out.println(
+        "Converted Volume: "
+                + convertedVolume.getValue()
+                + " "
+                + convertedVolume.getUnit()
+);
+
+// Volume Addition
+Quantity<VolumeUnit> sumVolume =
+        demonstrateAddition(volume1, volume2);
+
+System.out.println(
+        "Sum Volume: "
+                + sumVolume.getValue()
+                + " "
+                + sumVolume.getUnit()
+);
     }
 }

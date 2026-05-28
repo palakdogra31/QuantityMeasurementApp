@@ -809,4 +809,79 @@ public class QuantityMeasurementAppTest {
                 0.01
         );
     }
+    @Test
+public void volumeLitreEqualsMilliliters() {
+
+    Quantity<VolumeUnit> litre =
+            new Quantity<>(1.0, VolumeUnit.LITRE);
+
+    Quantity<VolumeUnit> ml =
+            new Quantity<>(1000.0,
+                    VolumeUnit.MILLILITRE);
+
+    assertTrue(
+            QuantityMeasurementApp
+                    .demonstrateEquality(litre, ml)
+    );
+}
+@Test
+public void convertVolumeLitersToMilliliters() {
+
+    Quantity<VolumeUnit> litre =
+            new Quantity<>(1.0, VolumeUnit.LITRE);
+
+    Quantity<VolumeUnit> converted =
+            QuantityMeasurementApp
+                    .demonstrateConversion(
+                            litre,
+                            VolumeUnit.MILLILITRE
+                    );
+
+    assertEquals(
+            1000.0,
+            converted.getValue()
+    );
+}
+@Test
+public void addVolumeLitersAndMilliliters() {
+
+    Quantity<VolumeUnit> litre =
+            new Quantity<>(1.0, VolumeUnit.LITRE);
+
+    Quantity<VolumeUnit> ml =
+            new Quantity<>(1000.0,
+                    VolumeUnit.MILLILITRE);
+
+    Quantity<VolumeUnit> result =
+            QuantityMeasurementApp
+                    .demonstrateAddition(
+                            litre,
+                            ml
+                    );
+
+    assertEquals(
+            2.0,
+            result.getValue()
+    );
+}
+@Test
+public void convertVolumeGallonsToLitres() {
+
+    Quantity<VolumeUnit> gallon =
+            new Quantity<>(1.0,
+                    VolumeUnit.GALLON);
+
+    Quantity<VolumeUnit> converted =
+            QuantityMeasurementApp
+                    .demonstrateConversion(
+                            gallon,
+                            VolumeUnit.LITRE
+                    );
+
+    assertEquals(
+            3.78541,
+            converted.getValue(),
+            0.01
+    );
+}
 }
