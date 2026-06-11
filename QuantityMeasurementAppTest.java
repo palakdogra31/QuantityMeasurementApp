@@ -884,4 +884,212 @@ public void convertVolumeGallonsToLitres() {
             0.01
     );
 }
+@Test
+void shouldSubtractSameLengthUnits() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> fiveFeet =
+            new Quantity<>(5.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> result =
+            tenFeet.subtract(fiveFeet);
+
+    assertEquals(
+            5.0,
+            result.getValue()
+    );
+}
+@Test
+void shouldSubtractDifferentLengthUnits() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> sixInches =
+            new Quantity<>(6.0,
+                    LengthUnit.INCHES);
+
+    Quantity<LengthUnit> result =
+            tenFeet.subtract(sixInches);
+
+    assertEquals(
+            9.5,
+            result.getValue()
+    );
+}
+@Test
+void shouldSubtractAndReturnTargetUnit() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> sixInches =
+            new Quantity<>(6.0,
+                    LengthUnit.INCHES);
+
+    Quantity<LengthUnit> result =
+            tenFeet.subtract(
+                    sixInches,
+                    LengthUnit.INCHES
+            );
+
+    assertEquals(
+            114.0,
+            result.getValue()
+    );
+}
+@Test
+void shouldReturnNegativeResultAfterSubtraction() {
+
+    Quantity<LengthUnit> fiveFeet =
+            new Quantity<>(5.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> result =
+            fiveFeet.subtract(tenFeet);
+
+    assertEquals(
+            -5.0,
+            result.getValue()
+    );
+}
+@Test
+void shouldReturnZeroAfterSubtraction() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> oneTwentyInches =
+            new Quantity<>(120.0,
+                    LengthUnit.INCHES);
+
+    Quantity<LengthUnit> result =
+            tenFeet.subtract(
+                    oneTwentyInches
+            );
+
+    assertEquals(
+            0.0,
+            result.getValue()
+    );
+}
+@Test
+void shouldThrowExceptionForNullSubtraction() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> tenFeet.subtract(null)
+    );
+}
+@Test
+void shouldDivideSameUnits() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> twoFeet =
+            new Quantity<>(2.0,
+                    LengthUnit.FEET);
+
+    assertEquals(
+            5.0,
+            tenFeet.divide(twoFeet)
+    );
+}
+@Test
+void shouldDivideDifferentUnits() {
+
+    Quantity<LengthUnit> twentyFourInches =
+            new Quantity<>(24.0,
+                    LengthUnit.INCHES);
+
+    Quantity<LengthUnit> twoFeet =
+            new Quantity<>(2.0,
+                    LengthUnit.FEET);
+
+    assertEquals(
+            1.0,
+            twentyFourInches.divide(
+                    twoFeet
+            )
+    );
+}
+@Test
+void shouldReturnRatioGreaterThanOne() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> oneFeet =
+            new Quantity<>(1.0,
+                    LengthUnit.FEET);
+
+    assertEquals(
+            10.0,
+            tenFeet.divide(oneFeet)
+    );
+}
+@Test
+void shouldReturnRatioLessThanOne() {
+
+    Quantity<LengthUnit> fiveFeet =
+            new Quantity<>(5.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    assertEquals(
+            0.5,
+            fiveFeet.divide(tenFeet)
+    );
+}
+@Test
+void shouldThrowExceptionForDivisionByZero() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    Quantity<LengthUnit> zeroFeet =
+            new Quantity<>(0.0,
+                    LengthUnit.FEET);
+
+    assertThrows(
+            ArithmeticException.class,
+            () -> tenFeet.divide(
+                    zeroFeet
+            )
+    );
+}
+@Test
+void shouldThrowExceptionForNullDivision() {
+
+    Quantity<LengthUnit> tenFeet =
+            new Quantity<>(10.0,
+                    LengthUnit.FEET);
+
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> tenFeet.divide(null)
+    );
+}
 }
