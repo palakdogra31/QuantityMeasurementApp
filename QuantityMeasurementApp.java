@@ -238,5 +238,33 @@ double demonstrateDivision(
             "Division Result: "
                     + divisionResult
     );
+    Quantity<TemperatureUnit> celsius =
+        new Quantity<>(0.0,
+                TemperatureUnit.CELSIUS);
+
+Quantity<TemperatureUnit> fahrenheit =
+        new Quantity<>(32.0,
+                TemperatureUnit.FAHRENHEIT);
+
+System.out.println(
+        "Temperature Equal: "
+                + celsius.equals(
+                        fahrenheit));
+                        double temp =
+        celsius.convertTo(
+                TemperatureUnit.FAHRENHEIT);
+
+System.out.println(
+        "0 Celsius in Fahrenheit: "
+                + temp);
+                try {
+    celsius.add(fahrenheit);
 }
+catch (UnsupportedOperationException e) {
+    System.out.println(
+            e.getMessage());
+}
+
+}
+
 }

@@ -20,16 +20,21 @@ public class Quantity<U extends IMeasurable> {
         return unit;
     }
 
-    public double convertTo(U targetUnit) {
+   public double convertTo(U targetUnit) {
 
-        if (unit.getClass() != targetUnit.getClass()) {
-            throw new IllegalArgumentException("Incompatible unit types");
-        }
+   if (!unit.getClass().getSuperclass()
+        .equals(targetUnit.getClass().getSuperclass())) {
 
-        double baseValue = unit.convertToBaseUnit(value);
+    throw new IllegalArgumentException(
+            "Incompatible unit types");
+}
 
-        return targetUnit.convertFromBaseUnit(baseValue);
-    }
+    double baseValue =
+            unit.convertToBaseUnit(value);
+
+    return targetUnit.convertFromBaseUnit(
+            baseValue);
+}
 
     // =========================
     // UC13 ADD
@@ -126,7 +131,8 @@ public class Quantity<U extends IMeasurable> {
                     "Quantity cannot be null");
         }
 
-        if (unit.getClass() != other.unit.getClass()) {
+        if (!unit.getClass().getSuperclass()
+        .equals(other.unit.getClass().getSuperclass())) {
             throw new IllegalArgumentException(
                     "Incompatible unit types");
         }
@@ -151,20 +157,23 @@ public class Quantity<U extends IMeasurable> {
     // =========================
 
     private double performArithmetic(
-            Quantity<U> other,
-            ArithmeticOperation operation) {
+        Quantity<U> other,
+        ArithmeticOperation operation) {
 
-        double thisBase =
-                unit.convertToBaseUnit(value);
+    unit.validateOperationSupport(
+            operation.name());
 
-        double otherBase =
-                other.unit.convertToBaseUnit(
-                        other.value);
+    double thisBase =
+            unit.convertToBaseUnit(value);
 
-        return operation.compute(
-                thisBase,
-                otherBase);
-    }
+    double otherBase =
+            other.unit.convertToBaseUnit(
+                    other.value);
+
+    return operation.compute(
+            thisBase,
+            otherBase);
+}
 
     // =========================
     // EQUALS
@@ -181,9 +190,10 @@ public class Quantity<U extends IMeasurable> {
             return false;
         }
 
-        if (unit.getClass() != other.unit.getClass()) {
-            return false;
-        }
+      if (!unit.getClass().getSuperclass()
+        .equals(other.unit.getClass().getSuperclass())) {
+    return false;
+}
 
         double thisBase =
                 unit.convertToBaseUnit(value);

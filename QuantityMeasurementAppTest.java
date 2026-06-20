@@ -1092,4 +1092,71 @@ void shouldThrowExceptionForNullDivision() {
             () -> tenFeet.divide(null)
     );
 }
+@Test
+void shouldReturnTrueForEqualTemperature() {
+
+    Quantity<TemperatureUnit> celsius =
+            new Quantity<>(0.0,
+                    TemperatureUnit.CELSIUS);
+
+    Quantity<TemperatureUnit> fahrenheit =
+            new Quantity<>(32.0,
+                    TemperatureUnit.FAHRENHEIT);
+
+    assertEquals(
+            celsius,
+            fahrenheit
+    );
+}
+@Test
+void shouldThrowExceptionWhenAddingTemperature() {
+
+    Quantity<TemperatureUnit> celsius =
+            new Quantity<>(0.0,
+                    TemperatureUnit.CELSIUS);
+
+    Quantity<TemperatureUnit> fahrenheit =
+            new Quantity<>(32.0,
+                    TemperatureUnit.FAHRENHEIT);
+
+    assertThrows(
+            UnsupportedOperationException.class,
+            () -> celsius.add(fahrenheit)
+    );
+}
+@Test
+void shouldThrowExceptionWhenSubtractingTemperature() {
+
+    Quantity<TemperatureUnit> celsius =
+            new Quantity<>(0.0,
+                    TemperatureUnit.CELSIUS);
+
+    Quantity<TemperatureUnit> fahrenheit =
+            new Quantity<>(32.0,
+                    TemperatureUnit.FAHRENHEIT);
+
+    assertThrows(
+            UnsupportedOperationException.class,
+            () -> celsius.subtract(
+                    fahrenheit)
+    );
+}
+@Test
+void shouldThrowExceptionWhenDividingTemperature() {
+
+    Quantity<TemperatureUnit> celsius =
+            new Quantity<>(0.0,
+                    TemperatureUnit.CELSIUS);
+
+    Quantity<TemperatureUnit> fahrenheit =
+            new Quantity<>(32.0,
+                    TemperatureUnit.FAHRENHEIT);
+
+    assertThrows(
+            UnsupportedOperationException.class,
+            () -> celsius.divide(
+                    fahrenheit)
+    );
+}
+
 }
