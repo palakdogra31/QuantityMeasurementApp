@@ -1,11 +1,10 @@
-package com.apps.quantitymeasurement;
+package com.quantitymeasurement.interfaces;
 
 public interface IMeasurable {
 
     double getConversionFactor();
 
     double convertToBaseUnit(double value);
-
     double convertFromBaseUnit(double baseValue);
 
     // UC14 Default Method

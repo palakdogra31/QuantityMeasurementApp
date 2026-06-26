@@ -1,12 +1,17 @@
-package com.apps.quantitymeasurement;
+package com.quantitymeasurement;
 
+import com.quantitymeasurement.enums.LengthUnit;
+import com.quantitymeasurement.enums.TemperatureUnit;
+import com.quantitymeasurement.enums.VolumeUnit;
+import com.quantitymeasurement.enums.WeightUnit;
+import com.quantitymeasurement.model.Quantity;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class QuantityMeasurementAppTest {
+public class QuantityTest {
 
     // =========================================================
     // UC1 - FEET EQUALITY TESTS
@@ -819,10 +824,7 @@ public void volumeLitreEqualsMilliliters() {
             new Quantity<>(1000.0,
                     VolumeUnit.MILLILITRE);
 
-    assertTrue(
-            QuantityMeasurementApp
-                    .demonstrateEquality(litre, ml)
-    );
+        assertEquals(litre, ml);
 }
 @Test
 public void convertVolumeLitersToMilliliters() {
@@ -830,16 +832,16 @@ public void convertVolumeLitersToMilliliters() {
     Quantity<VolumeUnit> litre =
             new Quantity<>(1.0, VolumeUnit.LITRE);
 
-    Quantity<VolumeUnit> converted =
-            QuantityMeasurementApp
-                    .demonstrateConversion(
-                            litre,
-                            VolumeUnit.MILLILITRE
-                    );
+    double converted =
+            litre.convertTo(
+                    VolumeUnit.MILLILITRE
+            );
+
+    assertEquals(1000.0, converted);
 
     assertEquals(
             1000.0,
-            converted.getValue()
+            converted
     );
 }
 @Test
@@ -853,11 +855,12 @@ public void addVolumeLitersAndMilliliters() {
                     VolumeUnit.MILLILITRE);
 
     Quantity<VolumeUnit> result =
-            QuantityMeasurementApp
-                    .demonstrateAddition(
-                            litre,
-                            ml
-                    );
+            litre.add(ml);
+
+    assertEquals(
+            2.0,
+            result.getValue()
+    );
 
     assertEquals(
             2.0,
@@ -871,16 +874,20 @@ public void convertVolumeGallonsToLitres() {
             new Quantity<>(1.0,
                     VolumeUnit.GALLON);
 
-    Quantity<VolumeUnit> converted =
-            QuantityMeasurementApp
-                    .demonstrateConversion(
-                            gallon,
-                            VolumeUnit.LITRE
-                    );
+    double converted =
+            gallon.convertTo(
+                    VolumeUnit.LITRE
+            );
 
     assertEquals(
             3.78541,
-            converted.getValue(),
+            converted,
+            0.01
+    );
+
+    assertEquals(
+            3.78541,
+            converted,
             0.01
     );
 }

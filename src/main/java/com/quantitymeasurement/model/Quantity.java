@@ -1,8 +1,15 @@
-package com.apps.quantitymeasurement;
+package com.quantitymeasurement.model;
+
+import com.quantitymeasurement.interfaces.IMeasurable;
+import com.quantitymeasurement.enums.LengthUnit;
+import com.quantitymeasurement.enums.VolumeUnit;
+import com.quantitymeasurement.enums.WeightUnit;
 
 import java.util.function.DoubleBinaryOperator;
+import java.io.Serializable;
 
-public class Quantity<U extends IMeasurable> {
+public class Quantity<U extends IMeasurable>
+        implements Serializable {
 
     private final double value;
     private final U unit;
