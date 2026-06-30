@@ -6,9 +6,14 @@ import com.quantitymeasurement.model.QuantityDTO;
 import com.quantitymeasurement.model.QuantityMeasurementEntity;
 import com.quantitymeasurement.model.QuantityModel;
 import com.quantitymeasurement.repository.IQuantityMeasurementRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QuantityMeasurementServiceImpl<T extends IMeasurable>
         implements IQuantityMeasurementService<T> {
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(
+                    QuantityMeasurementServiceImpl.class);
 
     private final IQuantityMeasurementRepository<T> repository;
 
@@ -26,6 +31,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
                 new Quantity<>(
                         dto.getValue(),
                         dto.getUnit());
+        LOGGER.info("Creating Quantity");
 
         return new QuantityModel<>(quantity);
     }
@@ -34,18 +40,48 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
     public void save(
             QuantityDTO<T> dto) {
 
-        Quantity<T> quantity =
-                new Quantity<>(
-                        dto.getValue(),
-                        dto.getUnit());
+        LOGGER.info(
+                "Saving quantity measurement.");
 
-        QuantityMeasurementEntity<T> entity =
-                new QuantityMeasurementEntity<>(
-                        quantity);
+        QuantityMeasurementEntity entity =
+                new QuantityMeasurementEntity();
+
+        entity.setThisValue(
+                dto.getValue());
+
+        entity.setThisUnit(
+                dto.getUnit().toString());
+
+        entity.setThisMeasurementType(
+                dto.getUnit()
+                        .getClass()
+                        .getSimpleName());
+
+        entity.setOperation(
+                "SAVE");
+
+        entity.setResultValue(
+                dto.getValue());
+
+        entity.setResultUnit(
+                dto.getUnit().toString());
+
+        entity.setResultMeasurementType(
+                dto.getUnit()
+                        .getClass()
+                        .getSimpleName());
+
+        entity.setResultString(
+                dto.getValue() + " "
+                        + dto.getUnit());
+
+        entity.setError(false);
 
         repository.save(entity);
-    }
 
+        LOGGER.info(
+                "Quantity measurement saved successfully.");
+    }
     @Override
     public boolean compare(
             QuantityDTO<T> first,
@@ -60,6 +96,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
                 new Quantity<>(
                         second.getValue(),
                         second.getUnit());
+        LOGGER.info("Comparing quantities");
 
         return q1.equals(q2);
     }
@@ -73,7 +110,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
                 new Quantity<>(
                         quantity.getValue(),
                         quantity.getUnit());
-
+        LOGGER.info("Converting quantity");
         return q.convertTo(targetUnit);
     }
 
@@ -91,6 +128,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
                         second.getUnit());
 
         Quantity<T> result = q1.add(q2);
+        LOGGER.info("Performing addition");
 
         return new QuantityModel<>(result);
     }
@@ -100,7 +138,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
             QuantityDTO<T> first,
             QuantityDTO<T> second,
             T targetUnit) {
-
+        LOGGER.info("Processing add request with target unit");
         Quantity<T> q1 =
                 new Quantity<>(first.getValue(),
                         first.getUnit());
@@ -129,7 +167,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
                         second.getUnit());
 
         Quantity<T> result = q1.subtract(q2);
-
+        LOGGER.info("Performing subtraction");
         return new QuantityModel<>(result);
     }
 
@@ -138,7 +176,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
             QuantityDTO<T> first,
             QuantityDTO<T> second,
             T targetUnit) {
-
+        LOGGER.info("Processing subtraction request with target unit");
         Quantity<T> q1 =
                 new Quantity<>(first.getValue(),
                         first.getUnit());
@@ -165,7 +203,7 @@ public class QuantityMeasurementServiceImpl<T extends IMeasurable>
         Quantity<T> q2 =
                 new Quantity<>(second.getValue(),
                         second.getUnit());
-
+        LOGGER.info("Performing division");
         return q1.divide(q2);
     }
 }

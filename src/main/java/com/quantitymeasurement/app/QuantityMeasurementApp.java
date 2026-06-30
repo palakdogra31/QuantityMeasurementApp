@@ -277,7 +277,7 @@
 //}
 
 package com.quantitymeasurement.app;
-
+import com.quantitymeasurement.util.ApplicationConfig;
 import com.quantitymeasurement.controller.QuantityMeasurementController;
 import com.quantitymeasurement.enums.LengthUnit;
 import com.quantitymeasurement.enums.TemperatureUnit;
@@ -286,10 +286,24 @@ import com.quantitymeasurement.enums.WeightUnit;
 import com.quantitymeasurement.factory.QuantityMeasurementFactory;
 import com.quantitymeasurement.model.QuantityDTO;
 import com.quantitymeasurement.model.QuantityModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class QuantityMeasurementApp {
+    private static void closeResources() {
+
+        QuantityMeasurementFactory
+                .createRepository()
+                .releaseResources();
+    }
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(
+                    QuantityMeasurementApp.class);
+
 
     public static void main(String[] args) {
+        LOGGER.info("Quantity Measurement Application Started");
 
         // ==========================
         // CONTROLLERS
@@ -306,6 +320,11 @@ public class QuantityMeasurementApp {
 
         QuantityMeasurementController<TemperatureUnit> temperatureController =
                 QuantityMeasurementFactory.createController();
+        LOGGER.info(
+                "Repository Type : {}",
+                ApplicationConfig.getRepositoryType());
+
+
 
         // ==========================
         // WEIGHT
@@ -454,5 +473,7 @@ public class QuantityMeasurementApp {
         temperatureController.save(celsius);
 
         System.out.println("\nData saved successfully.");
+        LOGGER.info("Application Finished");
+        closeResources();
     }
 }

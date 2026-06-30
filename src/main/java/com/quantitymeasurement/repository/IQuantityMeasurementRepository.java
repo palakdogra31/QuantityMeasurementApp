@@ -7,9 +7,21 @@ import java.util.List;
 
 public interface IQuantityMeasurementRepository<T extends IMeasurable> {
 
-    void save(QuantityMeasurementEntity<T> entity);
+    void save(QuantityMeasurementEntity entity);
 
-    List<QuantityMeasurementEntity<T>> findAll();
+    List<QuantityMeasurementEntity> getAllMeasurements();
 
-    void clear();
+    List<QuantityMeasurementEntity> getMeasurementsByOperation(
+            String operation);
+
+    List<QuantityMeasurementEntity> getMeasurementsByType(
+            String measurementType);
+
+    int getTotalCount();
+
+    void deleteAll();
+
+    String getPoolStatistics();
+
+    void releaseResources();
 }

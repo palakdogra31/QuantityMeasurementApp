@@ -4,8 +4,13 @@ import com.quantitymeasurement.interfaces.IMeasurable;
 import com.quantitymeasurement.model.QuantityDTO;
 import com.quantitymeasurement.model.QuantityModel;
 import com.quantitymeasurement.service.IQuantityMeasurementService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QuantityMeasurementController<T extends IMeasurable> {
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(
+                    QuantityMeasurementController.class);
 
     private final IQuantityMeasurementService<T> service;
 
@@ -35,8 +40,11 @@ public class QuantityMeasurementController<T extends IMeasurable> {
     }
 
     public double convert(
+
+
             QuantityDTO<T> quantity,
             T targetUnit) {
+        LOGGER.info("Processing convert request");
 
         return service.convert(quantity, targetUnit);
     }
@@ -44,6 +52,7 @@ public class QuantityMeasurementController<T extends IMeasurable> {
     public QuantityModel<T> add(
             QuantityDTO<T> first,
             QuantityDTO<T> second) {
+        LOGGER.info("Processing add request");
 
         return service.add(first, second);
     }
@@ -52,14 +61,14 @@ public class QuantityMeasurementController<T extends IMeasurable> {
             QuantityDTO<T> first,
             QuantityDTO<T> second,
             T targetUnit) {
-
+        LOGGER.info("Processing add request with target unit");
         return service.add(first, second, targetUnit);
     }
 
     public QuantityModel<T> subtract(
             QuantityDTO<T> first,
             QuantityDTO<T> second) {
-
+        LOGGER.info("Processing subtract request");
         return service.subtract(first, second);
     }
 
@@ -67,14 +76,14 @@ public class QuantityMeasurementController<T extends IMeasurable> {
             QuantityDTO<T> first,
             QuantityDTO<T> second,
             T targetUnit) {
-
+        LOGGER.info("Processing subtraction request with target unit");
         return service.subtract(first, second, targetUnit);
     }
 
     public double divide(
             QuantityDTO<T> first,
             QuantityDTO<T> second) {
-
+        LOGGER.info("Processing divide request");
         return service.divide(first, second);
     }
 }
